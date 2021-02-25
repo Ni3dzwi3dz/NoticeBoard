@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Notix - {%block title %}{% endblock %}</title>
+    </head>
+    <body>
+        <nav>
+            <a href='#login'>Login</a>
+            <a href={{ url_for('register') }}>Register</a>
+            <a href='#add'>Add notice</a>
+            <a href='#list'>My notices</a>
+            <a href='#messages'>MSGs</a>
+        </nav>
+        <h1>Notix</h1>
+        {% block content %} {%endblock %}
+    </body>
+</html>
