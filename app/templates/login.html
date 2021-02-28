@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %} login {% endblock %}
+
+{%block content%}
+<h2>Welcome back!</h2><hr>
+
+<form id='register' class='form_user' action='' method='POST'>
+    {{ form.hidden_tag() }}
+    <p> 
+        {{ form.username.label}}: {{ form.username(size=32)}}
+        {% for error in form.username.errors  %}
+            <span class='error'>{{ error }}</span><br>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.password.label}}: {{ form.password(size=32)}}
+        {% for error in form.password.errors  %}
+            <span class='error'>{{ error }}</span><br>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.submit()}}
+    </p>
+
+</form>
+
+    
+{% endblock  %}

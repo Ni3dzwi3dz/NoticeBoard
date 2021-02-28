@@ -9,13 +9,31 @@
     {{ form.hidden_tag() }}
     <p>
         {{ form.username.label}}: {{ form.username(size=32)}}
+        {% for error in form.username.errors  %}
+            <span class='error'>{{ error }}</span><br>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.email.label}}: {{ form.email(size=60)}}
+        {% for error in form.email.errors  %}
+            <span class='error'>{{ error }}</span><br>
+        {% endfor %}
     </p>
     <p>
         {{ form.password.label}}: {{ form.password(size=32)}}<br>
         {{ form.password2.label}}: {{ form.password2(size=32)}}
+        {% for error in form.password.errors  %}
+            <span class='error'>{{ error }}</span><br>
+        {% endfor %}
+        {% for error in form.password2.errors  %}
+            <span class='error'>{{ error }}</span><br>
+        {% endfor %}
     </p>
     <p>
         {{ form.city.label}}: {{ form.city(size=32)}}
+        {% for error in form.city.errors  %}
+        <span class='error'>{{ error }}</span><br>
+        {% endfor %}
     </p>
     <p>
         {{ form.about.label}}: {{ form.about(size=32)}}

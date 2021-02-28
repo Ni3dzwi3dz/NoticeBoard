@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class='profile'>
+    <div class='profile-block' id='avatar'>
+        <img src={{ current_user.avatar(128)}}>
+    </div>
+
+    <div class="profile-block" id='info'>
+        Name: {{ user.username}} <br>
+        From: {{user.city}}<br>
+        About: {{user.about}}<br>
+    </div>
+</div>
+
+<div class='posts'>
+    <!-- here i will post all the postings by the user-->
+</div>
+
+Name: {{ user.username}} <br>
+From: {{user.city}}<br>
+About: {{user.about}}<br>
+    
+{% endblock content %}
+

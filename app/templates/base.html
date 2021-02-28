@@ -5,13 +5,31 @@
     </head>
     <body>
         <nav>
-            <a href='#login'>Login</a>
-            <a href={{ url_for('register') }}>Register</a>
+            {% if current_user.is_anonymous %}
+                <a href={{ url_for('login') }}>Login</a>
+                <a href={{ url_for('register') }}>Register</a>
+            {% else %}
+                <a href={{ url_for('user_profile', 
+                        username=current_user.username) }}
+                <a href={{ url_for('logout') }}>Logout</a>
+
+            {% endif %}
+            
             <a href='#add'>Add notice</a>
             <a href='#list'>My notices</a>
             <a href='#messages'>MSGs</a>
         </nav>
         <h1>Notix</h1>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class='flash'>
+                    {% for message in messages  %}
+                        <li>{{message}}</li>
+                    {% endfor %}
+                </ul>
+            {%endif%}        
+                    
+        {% endwith %}
         {% block content %} {%endblock %}
     </body>
 </html>
