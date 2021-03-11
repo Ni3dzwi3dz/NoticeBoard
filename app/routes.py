@@ -1,15 +1,23 @@
 from app import app, db
 from flask import render_template, flash, redirect, request, url_for
-from app.forms import RegisterForm, LoginForm
+from app.forms import RegisterForm, LoginForm, UserEditForm, AddNoticeForm
 from app.models import User
-from flask_login import current_user, login_user
+from flask_login import current_user, login_user, login_required
 from werkzeug.urls import url_parse
+from datetime import datetime
 
 @app.route('/')
 @app.route('/index')
 def index():
     return render_template('index.html')
 
+#Users - register, login etc
+
+@app.before_request
+def track_time():
+    if current_user.is_authenticated:
+        current_user.last_seen = datetime.now()
+        db.session.commit()
 
 @app.route('/register', methods=['GET','POST'])
 def register():
@@ -50,6 +58,8 @@ def login():
         if user is None or not user.check_pass(form.password.data):
             flash('Either username or password is incorrect')
             return redirect(url_for('login'))
+        else:
+            login_user(user)
         
         next = request.args.get('next')
         if not next or url_parse(next).netloc == '':
@@ -59,6 +69,16 @@ def login():
 
     return render_template('login.html', form=form)
 
+@app.route('/logout')
+def logout():
+    pass
+
+@app.route('/user/edit')
+def edit_profile():
+    form=UserEditForm(current_user.username)
+
+    return render_template('user-edit.html', form=form)
+
 @app.route('/user/<username>')
 @login_required
 def user_profile(username):
@@ -66,3 +86,18 @@ def user_profile(username):
 
     return render_template('user.html', user=user)
 
+#Notices - adding, reading etc.
+
+@app.route('/notice/add')
+@login_required
+def add_notice():
+    form= AddNoticeForm()
+
+    return render_template('add-notice.html', form=form)
+
+
+
+#Error handling
+@app.errorhandler(404)
+def not_found_error(error):
+    return render_template('404.html')

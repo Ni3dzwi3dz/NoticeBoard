@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form id='edit' class='form_user' action='' method='POST'>
+    
+    {{ form.hidden_tag() }}
+
+    <p>
+        {{ form.username.label}}: {{ form.username(size=32,
+            value=current_user.username) }}
+        {% for error in form.username.errors  %}
+            <span class='error'>{{ error }}</span><br>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.email.label}}: {{ form.email(size=60)}}
+        {% for error in form.email.errors  %}
+            <span class='error'>{{ error }}</span><br>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.city.label}}: {{ form.city(size=32)}}
+        {% for error in form.city.errors  %}
+        <span class='error'>{{ error }}</span><br>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.about.label}}: {{ form.about(size=32)}}
+    </p>
+    <p>
+        {{ form.submit()}}
+    </p>
+
+
+</form>
+    
+{% endblock content %}
+

@@ -9,7 +9,16 @@
     <div class="profile-block" id='info'>
         Name: {{ user.username}} <br>
         From: {{user.city}}<br>
-        About: {{user.about}}<br>
+        
+        {% if user.about %}
+            About: {{user.about}}<br>    
+        {% endif %}
+
+        {% if user.last_seen %}
+            Last seen on: {{ user.last_seen }}  
+        {% endif %}
+
+        
     </div>
 </div>
 
@@ -17,9 +26,7 @@
     <!-- here i will post all the postings by the user-->
 </div>
 
-Name: {{ user.username}} <br>
-From: {{user.city}}<br>
-About: {{user.about}}<br>
+
     
 {% endblock content %}
 
