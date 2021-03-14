@@ -1,5 +1,5 @@
 from flask_wtf import  FlaskForm
-from wtforms import StringField, SubmitField, PasswordField,BooleanField, 
+from wtforms import StringField, SubmitField, PasswordField,BooleanField, \
     TextAreaField, FileField
 from wtforms.fields.html5 import EmailField
 from wtforms.validators import DataRequired, EqualTo
@@ -53,10 +53,9 @@ class UserEditForm(FlaskForm):
 
 class AddNoticeForm(FlaskForm):
     title=StringField('Title', validators=[DataRequired()])
-    body=StringField('Text', validators=[DataRequired()])
-    image=FileField('Image')
+    body=TextAreaField('Text', validators=[DataRequired()])
+    image=FileField('Add cover photo')
+    submit=SubmitField('Add')
 
-    def validate_image(self,image):
-        #check file-size and extensions
-        pass
+    
    

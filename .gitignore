@@ -4,6 +4,9 @@ app/__pycache__/
 __pycache__/
 migrations/
 
+#user uploads
+app/static/img/covers
+
 #logs
 app/logs/
 

@@ -1,4 +1,5 @@
 import os
+from flask import url_for
 
 class Config(object):
     #BASIC CONFIG
@@ -6,6 +7,8 @@ class Config(object):
 
     #FILEPATHS
     basedir = os.path.abspath(os.path.dirname(__file__))
+    UPLOAD_PATH= os.path.join(os.path.dirname('__main__'),'app','static','img',
+                                                                    'covers')
     
     #TOP SECRET CONFIG
     SECRET_KEY = os.environ.get('SECRET_KEY') or '3FG3h43ddSDF#$$ssdfsg'

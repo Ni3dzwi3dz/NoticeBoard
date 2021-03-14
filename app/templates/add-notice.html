@@ -4,8 +4,31 @@
 
 <h2>Add new notice</h2>
 
-<form>
-    {% form.hidden.tag %}
+<form id='addnotice' method="POST" action="" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+
+    <p>
+        {{ form.title.label}}: {{ form.title(size=100)}}<br>
+        {% for error in form.title.errors  %}
+            <span class='error'>{{ error }}</span><br>
+        {% endfor %}
+    </p>
+    <p>
+        {{form.body.label}}: {{ form.body(size=500)}}<br>
+        {% for error in form.body.errors  %}
+            <span class='error'>{{ error }}</span><br>
+        {% endfor %}
+    </p>
+
+    <p>    
+        {{form.image.label}}: {{ form.image}}
+        {% for error in form.image.errors  %}
+            <span class='error'>{{ error }}</span><br>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.submit() }}
+    </p>
 
 
 </form>

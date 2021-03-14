@@ -4,4 +4,29 @@
 
 {% block content%}
 <h2> Less important header</h2>
+
+<p>
+    <a href={{ url_for('add_notice') }}>
+        <h1> Here you can add notice</h1>   
+    </a>
+</p>
+
+{% for notice in notices  %}
+<div class="notice">
+    <div class="notice-header">
+        {{ notice.title }}
+    </div>
+
+    <div class="notice-image">
+        <img src="/static/img/covers/{{notice.filename}}">
+    </div>
+
+    <div class="notice-body">
+        {{ notice.body }}
+    </div>
+
+
+</div>
+    
+{% endfor %}
 {% endblock %}

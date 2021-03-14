@@ -33,7 +33,8 @@ class Notice(db.Model):
     body= db.Column(db.String(500))
     date= db.Column(db.DateTime, default=datetime.now())
     user_id= db.Column(db.Integer, db.ForeignKey('user.id'))
-    category= db.Column(db.Integer)
+    category= db.Column(db.Integer),
+    filename= db.Column(db.String(255),default='default.jpg')
 
     def __repr__(self):
         return f'{title}' 

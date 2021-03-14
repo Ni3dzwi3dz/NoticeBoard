@@ -29,7 +29,7 @@ if not app.debug:
     if not os.path.exists('logs'):
         os.mkdir('logs')
     
-    log_file = RotatingFileHandler('logs\notix.log', maxBytes=10240, 
+    log_file = RotatingFileHandler('logs/notix.log', maxBytes=10240, 
         backupCount=15)
     log_file.setFormatter(Formatter(
         '%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'))
