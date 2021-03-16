@@ -1,0 +1,64 @@
+/* 
+This stylesheet uses Flat UI pallette 
+https://flatuicolors.com/palette/defo
+
+
+*/
+
+:root {
+    --main--color: #8e44ad ;
+    --secondary--color: #f1c40f ;
+    --tertiary--color:#e67e22;
+    --highlight--color: #16a085;
+    --text--color: #2c3e50;
+    --background--color: #ecf0f1;
+    --shadow-color: #7f8c8d;
+
+    --header--font: 'Roboto', sans-serif;
+    --main--font: 'Shippori Mincho B1', serif;
+    --logo--font: 'Nunito', sans-serif;
+}
+
+body {
+    background-color: var(--background--color);
+    
+    /* Text properties */
+    color: var(--text--color);
+    font-family: var(--main--font);
+}
+
+.notice {
+    width: 200px;
+    height: 250px;
+    margin: 10px;
+    
+
+    border: 1px solid;
+    box-shadow: 0px 0px  5px var(--shadow-color);
+
+
+    
+    text-align: center;
+
+    display: inline-grid;
+
+}
+
+
+.notice-header{
+    height: 45px;
+    background-color: var(--main--color);
+
+    padding-top: 5px;
+
+
+    font-family: var(--header--font);
+    color: var(--secondary--color);
+}
+.notice-cover {
+    width: 200px;
+    height: 200px;
+
+
+    object-fit: cover;
+}

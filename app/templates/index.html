@@ -11,22 +11,19 @@
     </a>
 </p>
 
-{% for notice in notices  %}
-<div class="notice">
-    <div class="notice-header">
-        {{ notice.title }}
+<div class="notices-list">
+    {% for notice in notices  %}
+    <div class="notice">
+        <div class="notice-header">
+            {{ notice.title }}
+        </div>
+
+        <div class="notice-image">
+            <img src="/static/img/covers/{{notice.filename}}" class="notice-cover">
+        </div>
+
     </div>
-
-    <div class="notice-image">
-        <img src="/static/img/covers/{{notice.filename}}">
-    </div>
-
-    <div class="notice-body">
-        {{ notice.body }}
-    </div>
-
-
+        
+    {% endfor %}
 </div>
-    
-{% endfor %}
 {% endblock %}

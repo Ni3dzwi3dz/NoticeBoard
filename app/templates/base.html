@@ -2,24 +2,38 @@
 <html>
     <head>
         <title> Notix - {%block title %}{% endblock %}</title>
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Shippori+Mincho+B1&display=swap" 
+            rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@1,800&display=swap" 
+            rel="stylesheet">
+
     </head>
     <body>
-        <nav>
-            <a href={{ url_for('index') }}>Home</a>
-            {% if current_user.is_anonymous %}
-                <a href={{ url_for('login') }}>Login</a>
-                <a href={{ url_for('register') }}>Register</a>
-            {% else %}
-                <a href={{ url_for('user_profile', 
-                        username=current_user.username) }}>My profile</a>
-                <a href={{ url_for('logout') }}>Logout</a>
-
-            {% endif %}
+        <div class="main-menu">
+            <div class="logo">
+                 <a href={{ url_for('index') }}>NOTIX</a>
+            </div>
+            <nav>
             
-            <a href='#add'>Add notice</a>
-            <a href='#list'>My notices</a>
-            <a href='#messages'>MSGs</a>
-        </nav>
+                {% if current_user.is_anonymous %}
+                    <a href={{ url_for('login') }}>Login</a>
+                    <a href={{ url_for('register') }}>Register</a>
+                {% else %}
+                    <a href={{ url_for('user_profile', 
+                            username=current_user.username) }}>My profile</a>
+                    <a href={{ url_for('logout') }}>Logout</a>
+
+                {% endif %}
+                
+                <a href='#add'>Add notice</a>
+                <a href='#list'>My notices</a>
+                <a href='#messages'>MSGs</a>
+            </nav>
+        </div>
+        
         <h1>Notix</h1>
         {% with messages = get_flashed_messages() %}
             {% if messages %}
